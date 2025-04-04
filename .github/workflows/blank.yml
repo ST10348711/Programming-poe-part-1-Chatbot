@@ -81,9 +81,9 @@ namespace ChatbotV1
             {
                 case "how are you?":.
                     return "I'm doing well, thank you!"
-                case "what's your purpose?":
+                case "What is your purpose?":
                     return "My purpose is to help users learn about cybersecurity best practices.";
-                case "what can i ask you about?":
+                case "What can I ask you about?":
                     return "You can ask me about password safety, phishing, safe browsing, and other cybersecurity topics.";
                 case "password safety":
                     return "Use strong, unique passwords and consider a password manager.";
