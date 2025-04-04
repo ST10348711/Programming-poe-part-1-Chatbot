@@ -122,7 +122,7 @@ namespace ChatbotV1
 
             {
 
-                Console.Write("You: ");
+        
 
                 string userInput = Console.ReadLine();
 
