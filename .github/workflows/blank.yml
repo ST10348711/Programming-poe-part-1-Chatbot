@@ -60,7 +60,7 @@ namespace ChatbotV1
         {
             while (true)
             {
-                Console.Write("You:");
+                Console.Write("You: ");
                 string userInput = Console.ReadLine();
 
                 if (string.IsNullOrWhiteSpace(userInput))
@@ -70,7 +70,7 @@ namespace ChatbotV1
                 }
 
                 string response = GetResponse(userInput.ToLower());
-                Console.WriteLine($"Bot:{response}");
+                Console.WriteLine($"Bot: {response}");
                 Thread.Sleep(500); // Simulate a slight delay
             }
         }
@@ -79,11 +79,11 @@ namespace ChatbotV1
         {
             switch (input)
             {
-                case "how are you?":.
-                    return "I'm doing well, thank you!"
-                case "What is your purpose?":
+                case "how are you?":
+                    return "I'm doing well, thank you!";
+                case "what's your purpose?":
                     return "My purpose is to help users learn about cybersecurity best practices.";
-                case "What can I ask you about?":
+                case "what can i ask you about?":
                     return "You can ask me about password safety, phishing, safe browsing, and other cybersecurity topics.";
                 case "password safety":
                     return "Use strong, unique passwords and consider a password manager.";
