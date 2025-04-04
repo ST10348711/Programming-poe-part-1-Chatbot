@@ -79,8 +79,8 @@ namespace ChatbotV1
         {
             switch (input)
             {
-                case "how are you?":
-                    return "I'm doing well, thank you!";
+                case "how are you?":.
+                    return "I'm doing well, thank you!"
                 case "what's your purpose?":
                     return "My purpose is to help users learn about cybersecurity best practices.";
                 case "what can i ask you about?":
