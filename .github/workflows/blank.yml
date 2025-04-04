@@ -1,197 +1,99 @@
 using System;
-
 using System.Collections.Generic;
-
 using System.Linq;
-
 using System.Text;
-
 using System.Threading.Tasks;
-
 using System.Media;
-
 using System.Threading;
-
 using System.Diagnostics;
-
 using System.Runtime.ConstrainedExecution;
 
-
-
 namespace ChatbotV1
-
 {
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // 1. Voice Greeting
+            PlayVoiceGreeting();
 
-    internal class Program
+            // 2. Image Display (ASCII Art)
+            DisplayAsciiLogo();
 
-    {
+            // 3. Text-Based Greeting and User Interaction
+            GreetUser();
 
-        static void Main(string[] args)
+            // 4. Basic Response System and 5. Input Validation
+            ChatLoop();
+        }
 
-        {
+        static void PlayVoiceGreeting()
+        {
+            {
+                var myPlayer = new System.Media.SoundPlayer();
+                myPlayer.SoundLocation = @"C:\Users\Cedri\OneDrive\Documents\chat10bot\ConsoleApp1\bin\Debug\recording-audio.wav";     // WAV file in the project directory
+                myPlayer.PlaySync();
+            }
+        }
 
-            // 1. Voice Greeting
-
-            PlayVoiceGreeting();
-
-
-
-            // 2. Image Display (ASCII Art)
-
-            DisplayAsciiLogo();
-
-
-
-            // 3. Text-Based Greeting and User Interaction
-
-            GreetUser();
-
-
-
-            // 4. Basic Response System and 5. Input Validation
-
-            ChatLoop();
-
-        }
-
-
-
-        static void PlayVoiceGreeting()
-
-        {
-
-            {
-
-                var myPlayer = new System.Media.SoundPlayer();
-
-                myPlayer.SoundLocation = @"C:\Users\Cedri\OneDrive\Documents\chat10bot\ConsoleApp1\bin\Debug\recording-audio.wav";     // WAV file in the project directory
-
-                myPlayer.PlaySync();
-
-            }
-
-        }
-
-
-
-        static void DisplayAsciiLogo()
-
-        {
-
-            Console.WriteLine(@"
-
-     .--.
-
-    ( >.< )
-
-     -'
-
-     Ced-Man
-
+        static void DisplayAsciiLogo()
+        {
+            Console.WriteLine(@"
+     .--.
+    ( >.< )
+     -'
+     Ced-Man
 ");
+        }
 
-        }
+        static void GreetUser()
+        {
+            Console.WriteLine("Hello! Welcome to the Cybersecurity Awareness Bot.");
+            Console.Write("What is your name? ");
+            string userName = Console.ReadLine();
+            Console.WriteLine($"\nNice to meet you, {userName}!");
+            Console.WriteLine("I'm here to help you stay safe online. Feel free to ask me questions.");
+            Console.WriteLine("You can ask about password safety, phishing, safe browsing, and more.\n");
+        }
 
+        static void ChatLoop()
+        {
+            while (true)
+            {
+                Console.Write("You:");
+                string userInput = Console.ReadLine();
 
+                if (string.IsNullOrWhiteSpace(userInput))
+                {
+                    Console.WriteLine("I didn't quite understand that. Could you rephrase?");
+                    continue;
+                }
 
-        static void GreetUser()
+                string response = GetResponse(userInput.ToLower());
+                Console.WriteLine($"Bot:{response}");
+                Thread.Sleep(500); // Simulate a slight delay
+            }
+        }
 
-        {
-
-            Console.WriteLine("Hello! Welcome to the Cybersecurity Awareness Bot.");
-
-            Console.Write("What is your name? ");
-
-            string userName = Console.ReadLine();
-
-            Console.WriteLine($"\nNice to meet you, {userName}!");
-
-            Console.WriteLine("I'm here to help you stay safe online. Feel free to ask me questions.");
-
-            Console.WriteLine("You can ask about password safety, phishing, safe browsing, and more.\n");
-
-        }
-
-
-
-        static void ChatLoop()
-
-        {
-
-            while (true)
-
-            {
-
-        
-
-                string userInput = Console.ReadLine();
-
-
-
-                if (string.IsNullOrWhiteSpace(userInput))
-
-                {
-
-                    Console.WriteLine("I didn't quite understand that. Could you rephrase?");
-
-                    continue;
-
-                }
-
-
-
-                string response = GetResponse(userInput.ToLower());
-
-                Console.WriteLine($"Bot: {response}");
-
-                Thread.Sleep(500); // Simulate a slight delay
-
-            }
-
-        }
-
-
-
-        static string GetResponse(string input)
-
-        {
-
-            switch (input)
-
-            {
-
-                case "how are you?":
-
-                    return "I'm doing well, thank you!";
-
-                case "what's your purpose?":
-
-                    return "My purpose is to help users learn about cybersecurity best practices.";
-
-                case "what can i ask you about?":
-
-                    return "You can ask me about password safety, phishing, safe browsing, and other cybersecurity topics.";
-
-                case "password safety":
-
-                    return "Use strong, unique passwords and consider a password manager.";
-
-                case "phishing":
-
-                    return "Be wary of suspicious emails and links. Never share sensitive information online.";
-
-                case "safe browsing":
-
-                    return "Use reputable websites, keep your software updated, and avoid clicking on suspicious ads.";
-
-                default:
-
-                    return "I didn't quite understand that. Could you rephrase?";
-
-            }
-
-        }
-
-    }
-
+        static string GetResponse(string input)
+        {
+            switch (input)
+            {
+                case "how are you?":
+                    return "I'm doing well, thank you!";
+                case "what's your purpose?":
+                    return "My purpose is to help users learn about cybersecurity best practices.";
+                case "what can i ask you about?":
+                    return "You can ask me about password safety, phishing, safe browsing, and other cybersecurity topics.";
+                case "password safety":
+                    return "Use strong, unique passwords and consider a password manager.";
+                case "phishing":
+                    return "Be wary of suspicious emails and links. Never share sensitive information online.";
+                case "safe browsing":
+                    return "Use reputable websites, keep your software updated, and avoid clicking on suspicious ads.";
+                default:
+                    return "I didn't quite understand that. Could you rephrase?";
+            }
+        }
+    }
 }
